@@ -49,12 +49,12 @@
 	{% include head/favicons.html %}
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="{{ site.url | append: site.baseurl | append: site.css-path | append: '/styles.css' }}">
+	<link rel="stylesheet" href="{{ site.css-path }}">
 
 	{% if jekyll.environment == 'production' %}
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fce32d2cc6304fc49e2bd5c9cbfb9688"}'></script><!-- End Cloudflare Web Analytics -->
 	{% endif %}
 
-	<script type="text/javascript" src="{{ site.url | append: site.baseurl | append: site.js-path | append: '/scripts.js' }}"></script>
+	<script type="text/javascript" src="{{ site.js-path }}"></script>
 
 </head>

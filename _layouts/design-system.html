@@ -11,17 +11,17 @@ breadcrumb-home-label: "Design system"
 <div class="grid-row">
 
     <div class="grid-column-one-third">
-      
+        
         <ul class="list--no-styles design-system--navigation">
-          <h3>Components</h3>
-          {% for item in site.components %}
+          <h3><a href="{{ site.url | append: site.baseurl | append: '/components' }}" title="Learn more about styles">Styles</a></h3>
+          {% for item in site.styles %}
           <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
           {% endfor %}
         </ul>
-        
+      
         <ul class="list--no-styles design-system--navigation">
-          <h3>Styles</h3>
-          {% for item in site.styles %}
+          <h3><a href="{{ site.url | append: site.baseurl | append: '/components' }}" title="Learn more about components">Components</a></h3>
+          {% for item in site.components %}
           <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
           {% endfor %}
         </ul>

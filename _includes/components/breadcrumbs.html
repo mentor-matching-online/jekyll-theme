@@ -4,7 +4,7 @@
 	<ol class="breadcrumbs--list">
 		{% unless page.breadcrumbs-override == true or layout.breadcrumbs-override == true %}
 		<li class="breadcrumbs--list-item">
-			<a class="breadcrumbs--link" href="{{ site.url | append: site.baseurl }}">Home</a>
+			<a class="breadcrumbs--link" href="{{ site.url | append: site.baseurl }}">{{ layout.breadcrumb-home-label | default: "Home" }}</a>
 		</li>
 		<li class="breadcrumbs--list-item">
 			<a class="breadcrumbs--link" href="{{ site.url | append: site.baseurl | append: '/' | append: page.collection }}">{{ page.collection | replace: '-', ' ' | capitalize }}</a>

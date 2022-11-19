@@ -7,8 +7,10 @@ rebuild.sh
 Gemfile.lock
 
 # Files and folders for local testing
+index.md
 _posts/
 _pages/
+_config.yml
 CNAME
 feed.xml
 

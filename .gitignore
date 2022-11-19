@@ -3,7 +3,6 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 *DS_Store
-rebuild.sh
 Gemfile.lock
 
 # Files and folders for local testing

@@ -1,0 +1,39 @@
+---
+layout: default
+breadcrumbs: false
+---
+
+<div class="grid-row">
+
+    {% include components/page-header.html %}
+
+</div>
+<div class="grid-row">
+
+    <div class="grid-column-one-third">
+      
+        <ul class="list--no-styles design-system--navigation">
+          <h3>Components</h3>
+          {% for item in site.components %}
+          <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+        
+        <ul class="list--no-styles design-system--navigation">
+          <h3>Styles</h3>
+          {% for item in site.styles %}
+          <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="grid-column-two-thirds">
+
+        <article div class="design-system--article">
+            {{ content }}
+        </article>
+
+    </div>
+
+</div>

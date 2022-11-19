@@ -1,0 +1,32 @@
+{% unless page.breadcrumbs == false or layout.breadcrumbs == false %}
+
+<div class="breadcrumbs breadcrumbs--collapse-on-mobile">
+	<ol class="breadcrumbs--list">
+		{% unless page.breadcrumbs-override == true or layout.breadcrumbs-override == true %}
+		<li class="breadcrumbs--list-item">
+			<a class="breadcrumbs--link" href="{{ site.url | append: site.baseurl }}">Home</a>
+		</li>
+		<li class="breadcrumbs--list-item">
+			<a class="breadcrumbs--link" href="{{ site.url | append: site.baseurl | append: '/' | append: page.collection }}">{{ page.collection | replace: '-', ' ' | capitalize }}</a>
+		</li>
+		{% endunless %}
+		{% if layout.breadcrumbs or page.breadcrumbs %}
+		{% if page.breadcrumbs %}
+			{% assign breadcrumbs = page.breadcrumbs %}
+		{% else %}
+			{% assign breadcrumbs = layout.breadcrumbs %}
+		{% endif %}
+		{% for item in breadcrumbs %}
+		<li class="breadcrumbs--list-item">
+			{% if item.url contains "https://" or item.url contains "http://" %}
+				{% assign url = item.url %}
+			{% else %}
+				{% assign url = site.url | append: site.baseurl | append: item.url %}
+			{% endif %}
+			<a class="breadcrumbs--link" href="{{ url }}">{{ item.title }}</a>
+		</li>
+		{% endfor %}
+		{% endif %}
+	</ol>
+</div>
+{% endunless %}

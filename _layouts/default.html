@@ -1,0 +1,22 @@
+---
+layout: skeleton
+breadcrumbs: false
+---
+
+{% include components/header.html %}
+
+<div class="width-container">
+
+	{% include components/breadcrumbs.html %}
+	{% include components/back.html %}
+
+	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
+
+		{{ content }}
+
+	</main>
+
+</div>
+
+{% include components/footer.html %}
+

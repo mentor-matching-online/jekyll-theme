@@ -13,7 +13,7 @@ breadcrumb-home-label: "Design system"
     <div class="grid-column-one-third">
         
         <ul class="list--no-styles design-system--navigation">
-          <h3><a href="{{ site.url | append: site.baseurl | append: '/components' }}" title="Learn more about styles">Styles</a></h3>
+          <h3><a href="{{ site.url | append: site.baseurl | append: '/styles' }}" title="Learn more about styles">Styles</a></h3>
           {% for item in site.styles %}
           <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
           {% endfor %}

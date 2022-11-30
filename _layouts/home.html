@@ -16,8 +16,35 @@ layout: skeleton
 <div class="width-container">
 
 	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
+		       
+		<div class="grid-row">
+			
+			<div class="grid-column-two-thirds">
+				
+				{{ content | default: "Page content will appear here when you put some in the main post content." | markdownify }}
+				
+			</div>
 		
-		{{ content | default: "Page content will appear here when you put some in the main post content." | markdownify }}
+		</div>
+		
+		<h2 class="heading-xl with-border">{{ page.loop-heading | default: "Add page.loop-heading to front matter" }}</h2>
+		
+		{% if site.guides == empty %}
+		
+		<blockquote>
+			<h3>Guides folder is empty</h3>
+			<p>Add some posts to the <code>_guides</code> folder, and they will display here.</p>
+			<p>Posts should be ordered. Add <code>page.order</code> to the front matter.</p>
+		</blockquote>
+		
+		{% else %}
+		
+			{% for post in site.posts %}
+			
+				
+			{% endfor %}
+		
+		{% endif %}
 		
 	</main>
 

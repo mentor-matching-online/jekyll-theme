@@ -1,21 +1,26 @@
 ---
-layout: default
-breadcrumbs: false
+layout: skeleton
 ---
 
-<div class="grid-row">
+{% include components/header.html %}
 
-		{% include components/page-header.html %}
+<header class="page--focus-header header-wrapper">
+	
+	<div class="width-container">
+		<h1 class="focus-header--heading-xxl">{{ page.title | default: "Add page.title in front matter" }}</h1>
+		<p class="focus-header--lead">{{ page.excerpt | default: "Add page.excerpt in front matter" }}</p>
+	</div>
+
+</header>
+
+<div class="width-container">
+
+	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
+		
+		{{ content | default: "Page content will appear here when you put some in the main post content." | markdownify }}
+		
+	</main>
 
 </div>
-<div class="grid-row">
 
-		<div class="grid-column-full-width">
-
-				<article>
-						{{ content }}
-				</article>
-
-		</div>
-
-</div>
+{% include components/footer.html %}

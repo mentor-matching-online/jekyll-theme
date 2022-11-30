@@ -71,7 +71,15 @@ google-site-verification: ""
 # Collections #
 ###############
 #This is the default permalink for the "_posts" folder.
-permalink: /:year/:month/:day/:title:output_ext
+permalink: /:title:output_ext
+
+collections:
+  guides:
+    output: true
+    permalink: /guide/:title/
+    defaults:
+      values:
+        layout: post
                 
 ##################
 # Build settings #

@@ -38,10 +38,10 @@ footer--production-notice: "Site created by <a href='https://www.johnpe.art/' cl
 
 # Footer menu links
 footer-menu--links:
-  - display-text: ""
-    alt-text: ""
+  - display-text: "Mentor matching software"
+    alt-text: "Use the mentor matching software"
     url: "/"
-    hidden: true
+    hidden: false
 
 ###############
 # Asset paths #

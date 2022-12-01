@@ -66,12 +66,12 @@ layout: skeleton
 							
 							{% unless post.order %}
 								{% assign orderLabel = "😡" %}
-								{% assign orderClass = "step-by-step--error" %}
+								{% assign orderClass = "step-by-step--and" %}
 							{% endunless %}
 							
 							<li data-order="{{ orderLabel }}" class="{{ orderClass }}">
 								{% unless post.order %}
-									<h3 class="heading-lg">Error in front matter – {{ post.title }}</h3>
+									<h3 class="heading-lg">{{ post.title }}</h3>
 									<p>You have not set the <strong>order</strong> in the post's front matter. You must set this as an integer using the format:</p>
 									<p>
 										<pre><code>---
@@ -97,22 +97,7 @@ order: 1
 			
 			</div>
 			
-			<div class="grid-column-one-third">
-				
-				<aside class="page--aside">
-					<h2 class="heading-sm">Related content</h2>
-					
-					<ul class="list--no-styles">
-					
-						<li>
-							<a href="">Other thing</a>
-						</li>
-						
-					</ul>
-					
-				</aside>
-				
-			</div>
+			{% include sidebar.html %}
 				
 		</div>
 		

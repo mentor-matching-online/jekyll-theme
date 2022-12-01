@@ -81,6 +81,8 @@ collections:
     defaults:
       values:
         layout: post
+  people:    
+    output: false
                 
 ##################
 # Build settings #

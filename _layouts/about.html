@@ -1,0 +1,60 @@
+---
+layout: skeleton
+---
+
+{% include components/navigation.html %}
+
+<header class="page--focus-header header-wrapper">
+	
+	<div class="width-container">
+		<h1 class="focus-header--heading-xxl">{{ page.title | default: "Add page.title in front matter" }}</h1>
+		<p class="focus-header--lead">{{ page.excerpt | default: "Add page.excerpt in front matter" }}</p>
+	</div>
+
+</header>
+
+<div class="width-container">
+
+	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
+		
+		<div class="grid-row">
+			
+			<div class="grid-column-two-thirds">
+				
+				{{ content }}
+				
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div class="grid-row">
+			<div class="grid-column-two-thirds">
+				<h2 class="heading-xl">Who we are</h2>
+			</div>
+		</div>
+		
+		{% for person in site.people %}
+		{% assign personPhoto = person.title | slugify | prepend: "/assets/images/" | append: ".jpg" %}
+		
+		<div class="page--content">
+			<div class="grid-row">
+				<div class="grid-column-one-third">
+					<img src="{{ personPhoto }}" alt="A photo of {{ person.title }}" class="person">
+				</div>
+				<div class="grid-column-two-thirds">	
+					<h3 class="heading-md">
+						{{ person.title | default: "Winnie Fred" }}
+						<span class="caption-md">{{ person.pronouns | default: "They/them" }}</span>
+					</h3>
+					{{ person.content }}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		
+	</main>
+
+</div>
+
+{% include components/footer.html %}

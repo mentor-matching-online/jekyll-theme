@@ -10,6 +10,7 @@ index.md
 index.html
 _posts/
 _pages/
+_guides/
 # Sass files are in a separate repo
 _sass/ 
 # Style files in a separate repo

@@ -16,33 +16,56 @@ layout: skeleton
 <div class="width-container">
 
 	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
-		       
-		<div class="grid-row">
-			
-			<div class="grid-column-two-thirds">
-				
-				{{ content | default: "Page content will appear here when you put some in the main post content." | markdownify }}
-				
-			</div>
 		
-		</div>
+		<h2 class="heading-xl">{{ page.heading | default: "Step-by-step guides" }}</h2>
+		<p class="lead">Guidance and resources to help you run your own mentoring programme.</p>
 		
-		<h2 class="heading-xl with-border">{{ page.loop-heading | default: "Add page.loop-heading to front matter" }}</h2>
+		<!--<p><strong>Don't want to do it yourself?</strong> We can do it for you. Contact us.</p>-->
+		
+		<hr>
 		
 		{% if site.guides == empty %}
 		
-		<blockquote>
-			<h3>Guides folder is empty</h3>
-			<p>Add some posts to the <code>_guides</code> folder, and they will display here.</p>
-			<p>Posts should be ordered. Add <code>page.order</code> to the front matter.</p>
-		</blockquote>
+		<div class="grid-row">
+			<div class="grid-column-two-thirds">
+				<blockquote>
+					<h3>Guides folder is empty</h3>
+					<p>Add some posts to the <strong>_guides</strong> folder, and they will display here.</p>
+					<p>Files should be named in the following format:<br><strong>name-of-your-file.md</strong></p>
+					<p>Files must contain <a href="https://jekyllrb.com/docs/front-matter/" noreferrer>front matter</a>. The front matter must include:</p>
+					<ol>
+						<li><strong>title</strong> – the name of your guide. This will be displayed on the home page.</li>
+						<li><strong>excerpt</strong> – a short, approximately 60 character summary of your guide. This will be displayed on the home page.
+						<li><strong>order</strong> – the order in which posts are to be displayed. Posts are ordered as a step-by-step guide on the home page.</li>
+					</ol>
+				</blockquote>
+			</div>
+		</div>
 		
 		{% else %}
 		
-			{% for post in site.posts %}
-			
+			<ol class="list--step-by-step">
+			{% assign order = 0 %}
+			{% for post in site.guides %}
+				{% if order == post.order %}
+					{% assign orderLabel = "&" %}
+					{% assign orderClass = "step-by-step--and" %}
+				{% else %}
+					{% assign orderLabel = post.order %}
+					{% assign orderClass = "step-by-step--number" %}
+				{% endif %}
+				
+				<li data-order="{{ orderLabel }}" class="{{ orderClass }}">
+					<h3 class="heading-lg">{{ post.title }}</h3>
+					{{ post.excerpt | markdownify }}
+					
+					<p><a href="" title="Read {{ post.title }}">Read this guide</a>
+				</li>
+				
+				{% assign order = post.order %}
 				
 			{% endfor %}
+			</ol>
 		
 		{% endif %}
 		

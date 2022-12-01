@@ -10,8 +10,10 @@ index.md
 index.html
 _posts/
 _pages/
-_sass/ # Sass files are in a separate repo
-assets/styles # Style files in a separate repo
+# Sass files are in a separate repo
+_sass/ 
+# Style files in a separate repo
+assets/styles
 _config.yml
 CNAME
 feed.xml

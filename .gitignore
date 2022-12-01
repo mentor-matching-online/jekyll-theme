@@ -8,9 +8,11 @@ Gemfile.lock
 # Files and folders for local testing
 index.md
 index.html
+about.md
 _posts/
 _pages/
 _guides/
+_people/
 # Sass files are in a separate repo
 _sass/ 
 # Style files in a separate repo

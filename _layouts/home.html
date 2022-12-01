@@ -2,7 +2,7 @@
 layout: skeleton
 ---
 
-{% include components/header.html %}
+{% include components/navigation.html %}
 
 <header class="page--focus-header header-wrapper">
 	
@@ -17,57 +17,104 @@ layout: skeleton
 
 	<main class="main-wrapper main-wrapper--auto-spacing" id="main-content" role="main">
 		
-		<h2 class="heading-xl">{{ page.heading | default: "Step-by-step guides" }}</h2>
-		<p class="lead">Guidance and resources to help you run your own mentoring programme.</p>
-		
-		<!--<p><strong>Don't want to do it yourself?</strong> We can do it for you. Contact us.</p>-->
-		
-		<hr>
-		
-		{% if site.guides == empty %}
-		
 		<div class="grid-row">
+			
 			<div class="grid-column-two-thirds">
-				<blockquote>
-					<h3>Guides folder is empty</h3>
-					<p>Add some posts to the <strong>_guides</strong> folder, and they will display here.</p>
-					<p>Files should be named in the following format:<br><strong>name-of-your-file.md</strong></p>
-					<p>Files must contain <a href="https://jekyllrb.com/docs/front-matter/" noreferrer>front matter</a>. The front matter must include:</p>
-					<ol>
-						<li><strong>title</strong> – the name of your guide. This will be displayed on the home page.</li>
-						<li><strong>excerpt</strong> – a short, approximately 60 character summary of your guide. This will be displayed on the home page.
-						<li><strong>order</strong> – the order in which posts are to be displayed. Posts are ordered as a step-by-step guide on the home page.</li>
-					</ol>
-				</blockquote>
+			
+				<h2 class="heading-xl">{{ page.heading | default: "Step-by-step guides" }}</h2>
+				
+				<!--<p><strong>Don't want to do it yourself?</strong> We can do it for you. Contact us.</p>-->
+				
+				
 			</div>
+			
 		</div>
+			
+		<div class="grid-row">
 		
-		{% else %}
-		
-			<ol class="list--step-by-step">
-			{% assign order = 0 %}
-			{% for post in site.guides %}
-				{% if order == post.order %}
-					{% assign orderLabel = "&" %}
-					{% assign orderClass = "step-by-step--and" %}
-				{% else %}
-					{% assign orderLabel = post.order %}
-					{% assign orderClass = "step-by-step--number" %}
-				{% endif %}
+			<div class="grid-column-two-thirds">
 				
-				<li data-order="{{ orderLabel }}" class="{{ orderClass }}">
-					<h3 class="heading-lg">{{ post.title }}</h3>
-					{{ post.excerpt | markdownify }}
+				<div class="page--content">
+				
+					{% if site.guides == empty %}
 					
-					<p><a href="" title="Read {{ post.title }}">Read this guide</a>
-				</li>
+							<blockquote>
+								<h3>Guides folder is empty</h3>
+								<p>Add some posts to the <strong>_guides</strong> folder, and they will display here.</p>
+								<p>Files should be named in the following format:<br><strong>name-of-your-file.md</strong></p>
+								<p>Files must contain <a href="https://jekyllrb.com/docs/front-matter/" noreferrer>front matter</a>. The front matter must include:</p>
+								<ol>
+									<li><strong>title</strong> – the name of your guide. This will be displayed on the home page.</li>
+									<li><strong>excerpt</strong> – a short, approximately 60 character summary of your guide. This will be displayed on the home page.
+									<li><strong>order</strong> – the order in which posts are to be displayed. Posts are ordered as a step-by-step guide on the home page.</li>
+								</ol>
+							</blockquote>
+					
+					{% else %}
+					
+						<ol class="list--step-by-step">
+						{% assign order = 0 %}
+						{% for post in site.guides %}
+							
+							{% if order == post.order %}
+								{% assign orderLabel = "&" %}
+								{% assign orderClass = "step-by-step--and" %}
+							{% else %}
+								{% assign orderLabel = post.order %}
+								{% assign orderClass = "step-by-step--number" %}
+							{% endif %}
+							
+							{% unless post.order %}
+								{% assign orderLabel = "😡" %}
+								{% assign orderClass = "step-by-step--error" %}
+							{% endunless %}
+							
+							<li data-order="{{ orderLabel }}" class="{{ orderClass }}">
+								{% unless post.order %}
+									<h3 class="heading-lg">Error in front matter – {{ post.title }}</h3>
+									<p>You have not set the <strong>order</strong> in the post's front matter. You must set this as an integer using the format:</p>
+									<p>
+										<pre><code>---
+order: 1
+---</code></pre>
+									</p>
+									<p>Set the front matter in the file in order to correct this error.</p>
+								{% else %}
+									<h3 class="heading-lg">{{ post.title }}</h3>
+									{{ post.excerpt | markdownify }}
+									<p><a href="{{ post.url }}" title="Read {{ post.title }}">Read this guide</a>
+								{% endunless %}
+							</li>
+							
+							{% assign order = post.order %}
+							
+						{% endfor %}
+						</ol>
+					
+					{% endif %}
+					
+				</div>
+			
+			</div>
+			
+			<div class="grid-column-one-third">
 				
-				{% assign order = post.order %}
+				<aside class="page--aside">
+					<h2 class="heading-sm">Related content</h2>
+					
+					<ul class="list--no-styles">
+					
+						<li>
+							<a href="">Other thing</a>
+						</li>
+						
+					</ul>
+					
+				</aside>
 				
-			{% endfor %}
-			</ol>
-		
-		{% endif %}
+			</div>
+				
+		</div>
 		
 	</main>
 

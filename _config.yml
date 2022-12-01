@@ -74,7 +74,8 @@ google-site-verification: ""
 permalink: /:title:output_ext
 
 collections:
-  guides:
+  guides:    
+    sort_by: order
     output: true
     permalink: /guide/:title/
     defaults:

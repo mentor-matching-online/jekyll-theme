@@ -4,15 +4,36 @@ breadcrumbs: false
 ---
 
 <article class="article--{{ page.layout }}">
-
+	
+	{% include components/page-header.html %}
+	
 	<div class="grid-row">
 		<div class="grid-column-two-thirds">
-			
-			<h1 class="page-title">{{ page.title }}</h1>
-
-			{{ content }}
-
+			<div class="page--content">
+				{{ content }}
+			</div>
+		</div>
+		
+		<div class="grid-column-one-third">
+			<div class="page--aside">
+				<h1 class="heading-sm">Related content</h1>
+				
+				<ul class="list--no-styles">
+				
+					<li>
+						<a href="">Other thing</a>
+					</li>
+					
+				</ul>
+				
+			</div>
 		</div>
 	</div>
 
 </article>
+
+<div class="grid-row">
+	<div class="grid-column-two-thirds">
+		{% include components/pagination.html %}
+	</div>
+</div>

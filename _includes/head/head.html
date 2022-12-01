@@ -48,13 +48,16 @@
 	<!-- Favicons -->
 	{% include head/favicons.html %}
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="{{ site.css-path }}">
+	<!-- CSS and JS-->
 
 	{% if jekyll.environment == 'production' %}
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fce32d2cc6304fc49e2bd5c9cbfb9688"}'></script><!-- End Cloudflare Web Analytics -->
+		<link rel="stylesheet" href="{{ site.css-path }}">
+		<script type="text/javascript" src="{{ site.js-path }}"></script>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ site.cloudflare }}"}'></script><!-- End Cloudflare Web Analytics -->
+	{% else %}
+		<link rel="stylesheet" href="/assets/styles/styles.css">
+		<script type="text/javascript" src="{{ site.js-path }}"></script>
 	{% endif %}
 
-	<script type="text/javascript" src="{{ site.js-path }}"></script>
 
 </head>

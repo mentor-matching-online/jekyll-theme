@@ -11,8 +11,8 @@
 
 			<nav>
 				<ul id="navigation" class="header--navigation" aria-label="Navigation menu">
-				{% for item in site.header-menu--links %}
-				{% if item.hidden != true %}
+				{% assign links = site.links | where: "header", true %}
+				{% for item in links %}
 					{% assign pageURL = page.url | remove: '/' %}
 					{% assign itemURL = item.url | remove: '/' %}
 					{% if pageURL == itemURL %}
@@ -28,7 +28,6 @@
 							</a>
 						</li>
 					{% endif %}
-				{% endif %}
 				{% endfor %}
 				</ul>
 			</nav>

@@ -6,14 +6,13 @@
 			</div>
 			<div class="grid-column-one-third">
 				<ul class="footer--list">
-					{% for item in site.footer-menu--links %}
-					{% if item.hidden != true %}
+					{% assign links = site.links | where: "footer", true %}
+					{% for item in links %}
 					<li class="footer--list-item">
 						<a class="footer--link" href="{{ item.url }}" title="{{ item.alt-text }}">
 							{{ item.display-text }}
 						</a>
 					</li>
-					{% endif %}
 					{% endfor %}
 				</ul>
 			</div>

@@ -5,14 +5,13 @@
     
     <ul class="list--no-styles">
     
-      {% for item in site.footer-menu--links %}
-      {% if item.hidden != true %}
+      {% assign links = site.links | where: "sidebar", true %}
+      {% for item in links %}
       <li class>
         <a class="link--no-underline link--no-visited-state" href="{{ item.url }}" title="{{ item.alt-text }}">
           {{ item.display-text }}
         </a>
       </li>
-      {% endif %}
       {% endfor %}
       
     </ul>

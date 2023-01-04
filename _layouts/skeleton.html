@@ -1,3 +1,9 @@
+{% if jekyll.environment == "production" %}
+	{% assign domain = site.url %}
+{% else %}
+	{% assign domain = "http://localhost:4000" %}
+{% endif %}
+
 <html lang="en">
 
 	{% include head/head.html %}

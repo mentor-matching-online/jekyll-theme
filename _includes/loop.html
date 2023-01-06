@@ -8,6 +8,7 @@
       <ol>
         <li><strong>title</strong> – the name of your guide. This will be displayed on the home page.</li>
         <li><strong>excerpt</strong> – a short, approximately 60 character summary of your guide. This will be displayed on the home page.
+        <li><strong>step</strong> – the label shown to the left of each guide on the home loop.</li>
         <li><strong>order</strong> – the order in which posts are to be displayed. Posts are ordered as a step-by-step guide on the home page.</li>
       </ol>
     </blockquote>
@@ -15,24 +16,25 @@
 {% else %}
 
   <ol class="list--step-by-step">
-  {% assign order = 0 %}
-  {% for post in site.guides %}
+  {% assign step = 0 %}
+  {% assign guides = site.guides | sort: 'order' %}
+  {% for post in guides %}
     
-    {% assign order_floor = post.order | floor %}
-    {% if order == order_floor %}
-      {% assign orderLabel = "&" %}
-      {% assign orderClass = "step-by-step--and" %}
+    {% assign step_floor = post.step | floor %}
+    {% if step == step_floor %}
+      {% assign stepLabel = "&" %}
+      {% assign stepClass = "step-by-step--and" %}
     {% else %}
-      {% assign orderLabel = post.order | floor %}
-      {% assign orderClass = "step-by-step--number" %}
+      {% assign stepLabel = post.step | floor %}
+      {% assign stepClass = "step-by-step--number" %}
     {% endif %}
     
-    {% unless post.order %}
-      {% assign orderLabel = "😡" %}
-      {% assign orderClass = "step-by-step--and" %}
+    {% unless post.step %}
+      {% assign stepLabel = "😡" %}
+      {% assign stepClass = "step-by-step--and" %}
     {% endunless %}
     
-    <li data-order="{{ orderLabel }}" class="{{ orderClass }}">
+    <li data-order="{{ stepLabel }}" class="{{ stepClass }}">
       {% unless post.order %}
         <h3 class="heading-lg">{{ post.title }}</h3>
         <p>You have not set the <strong>order</strong> in the post's front matter. You must set this as an integer using the format:</p>
@@ -49,7 +51,7 @@ order: 1
       {% endunless %}
     </li>
     
-    {% assign order = order_floor %}
+    {% assign step = step_floor %}
     
   {% endfor %}
   </ol>

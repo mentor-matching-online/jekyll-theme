@@ -12,14 +12,10 @@ breadcrumbs: false
 			<div class="page--content">
 				{{ content }}
 			</div>
+			
+			{% include components/pagination.html %}
 		</div>
 		{% include sidebar.html %}
 	</div>
 
 </article>
-
-<div class="grid-row">
-	<div class="grid-column-two-thirds">
-		{% include components/pagination.html %}
-	</div>
-</div>

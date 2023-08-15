@@ -1,0 +1,57 @@
+---
+layout: default
+caption: Software documentation
+---
+{% assign cat-count = 0 %}
+{% for item in site.software %}
+  {% unless item.categories == null %}
+    {% assign cat-count = cat-count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+
+{% include components/page-header.html %}
+
+<div class="grid-row">
+
+    <div class="grid-column-one-third">
+
+
+        {% if cat-count > 0 %}
+          {% assign groups = site.software | group_by: "categories" | sort: "name" %}
+
+          {% for group in groups %}
+          <ul class="list--no-styles design-system--navigation">
+
+          {{ group.name | remove: '["' | remove: '"]' | capitalize | prepend: '<h3>' | append: '</h3><ul class="list--no-styles">' }}
+          {% for item in group.items %}
+
+              <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
+
+          {% endfor %}
+            </ul>
+          {% endfor %}
+          </ul>
+
+        {% else %}
+
+          {% for item in loop %}
+
+          <li><a href="{{ site.url | append: site.baseurl | append: item.url }}">{{ item.title }}</a></li>
+
+          {% endfor %}
+
+        {% endif %}
+
+
+
+    </div>
+
+    <div class="grid-column-two-thirds">
+
+        <article div class="design-system--article">
+            {{ content }}
+        </article>
+
+    </div>
+
+</div>
